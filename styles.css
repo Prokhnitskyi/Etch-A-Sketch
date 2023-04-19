@@ -15,11 +15,11 @@ body {
 
 .grid {
     display: flex;
-    width: 32rem;
+    width: 32rem; /* grid size * 2 */
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    font-size: 1rem;
+    font-size: 1rem; /* element size coefficient */
 }
 
 .grid__element {

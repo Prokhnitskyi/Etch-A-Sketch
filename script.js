@@ -1,5 +1,6 @@
 (() => {
     const gridContainer = document.querySelector('.grid');
+    let mouseDown = false;
 
     function renderGrid(containerElement, gridSize = 16) {
         containerElement.innerHTML = ''; // for re-render
@@ -12,6 +13,16 @@
         gridContainer.dataset.size = gridSize.toString();
         gridContainer.style.fontSize = `${16 / gridSize}rem`
     }
+
+    function draw(event) {
+        if (!mouseDown || !event.target.classList.contains('grid__element')) return;
+        event.target.style.backgroundColor = `rgb(0 0 0)`;
+    }
+
+    gridContainer.addEventListener('mousemove', draw);
+    gridContainer.addEventListener('mousedown', ()=> mouseDown = true);
+    gridContainer.addEventListener('mouseup', ()=> mouseDown = false);
+    gridContainer.addEventListener('mouseleave', ()=> mouseDown = false);
 
     renderGrid(gridContainer);
 })();
