@@ -1,6 +1,6 @@
 (() => {
     const gridContainer = document.querySelector('.grid');
-    const modalButton = document.querySelector('.show-modal-button');
+    const modalButton = document.querySelector('.controls__show-modal');
     const modal = document.querySelector('.size-modal');
     const sizeForm = document.querySelector('.size-form');
     let mouseDown = false;

@@ -8,14 +8,31 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-<button class="show-modal-button">Change grid size</button>
+<header class="header">
+    <h1>Etch-A-Sketch</h1>
+</header>
+<section class="controls">
+    <h2 class="controls__title">Controls</h2>
+    <button class="controls__show-modal">Change grid size</button>
+    <div class="flex-input-container">
+        <label for="random-color">Random color</label>
+        <input type="checkbox" name="random-color" id="random-color" autocomplete="off">
+    </div>
+    <button class="">Darken mode</button>
+    <div>Current state: <span>black</span></div>
+</section>
+
 <section class="grid"></section>
 <dialog class="size-modal">
     <form method="dialog" class="size-form">
-        <label for="size-input">Number of squares per side:</label>
-        <input id="size-input" name="size" type="number" min="2" max="100" placeholder="16">
-        <button value="cancel" formmethod="dialog">Cancel</button>
-        <button type="submit">Submit</button>
+        <div class="flex-input-container">
+            <label for="size-input">Number of squares per side:</label>
+            <input id="size-input" name="size" type="number" min="2" max="100" placeholder="16">
+        </div>
+        <div class="flex-input-container">
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button type="submit">Submit</button>
+        </div>
     </form>
 </dialog>
 <script src="./script.js"></script>
