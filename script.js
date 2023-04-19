@@ -9,6 +9,8 @@
             cell.classList.add('grid__element');
             containerElement.append(cell);
         }
+        gridContainer.dataset.size = gridSize.toString();
+        gridContainer.style.fontSize = `${16 / gridSize}rem`
     }
 
     renderGrid(gridContainer);
