@@ -17,7 +17,9 @@
         gridContainer.style.fontSize = `${16 / gridSize}rem`
     }
 
-    function resizeGrid() {
+    function resizeGrid(event) {
+        if (event.submitter.getAttribute('formmethod')) return;
+
         const size = parseInt(this.size.value) || 16;
         renderGrid(gridContainer, size);
     }
