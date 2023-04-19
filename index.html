@@ -8,10 +8,16 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-<section class="grid">
-
-</section>
-
+<button class="show-modal-button">Change grid size</button>
+<section class="grid"></section>
+<dialog class="size-modal">
+    <form method="dialog" class="size-form">
+        <label for="size-input">Number of squares per side:</label>
+        <input id="size-input" name="size" type="number" min="2" max="100" placeholder="16">
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+</dialog>
 <script src="./script.js"></script>
 </body>
 </html>

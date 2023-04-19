@@ -1,5 +1,8 @@
 (() => {
     const gridContainer = document.querySelector('.grid');
+    const modalButton = document.querySelector('.show-modal-button');
+    const modal = document.querySelector('.size-modal');
+    const sizeForm = document.querySelector('.size-form');
     let mouseDown = false;
 
     function renderGrid(containerElement, gridSize = 16) {
@@ -14,6 +17,11 @@
         gridContainer.style.fontSize = `${16 / gridSize}rem`
     }
 
+    function resizeGrid() {
+        const size = parseInt(this.size.value) || 16;
+        renderGrid(gridContainer, size);
+    }
+
     function draw(event) {
         if (!mouseDown || !event.target.classList.contains('grid__element')) return;
         event.target.style.backgroundColor = `rgb(0 0 0)`;
@@ -23,6 +31,8 @@
     gridContainer.addEventListener('mousedown', ()=> mouseDown = true);
     gridContainer.addEventListener('mouseup', ()=> mouseDown = false);
     gridContainer.addEventListener('mouseleave', ()=> mouseDown = false);
+    modalButton.addEventListener('click', () => modal.showModal());
+    sizeForm.addEventListener('submit', resizeGrid);
 
     renderGrid(gridContainer);
 })();
