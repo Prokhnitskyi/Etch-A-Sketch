@@ -31,22 +31,30 @@
 
     function draw(event) {
         const cell = event.target;
-        const newBrightnessValue = parseFloat(cell.dataset.brightness) - 0.1;
 
         if (!mouseDown || !cell.classList.contains('grid__element')) return;
 
-        if (darkenCheckbox.checked) {
-            cell.style.filter = `brightness(${newBrightnessValue})`;
-            cell.dataset.brightness = newBrightnessValue.toFixed(2);
-        } else {
-            cell.style.filter = `brightness(1)`;
-            cell.dataset.brightness = '1';
-        }
+        changeBrightness(cell);
+        drawWithColor(cell);
+    }
 
-        if (randomCheckbox.checked) {
-            cell.style.backgroundColor = getRandomColor();
+    function changeBrightness(element) {
+        const newBrightnessValue = parseFloat(element.dataset.brightness) - 0.1;
+
+        if (darkenCheckbox.checked) {
+            element.style.filter = `brightness(${newBrightnessValue})`;
+            element.dataset.brightness = newBrightnessValue.toFixed(2);
         } else {
-            cell.style.backgroundColor = color;
+            element.style.filter = `brightness(1)`;
+            element.dataset.brightness = '1';
+        }
+    }
+
+    function drawWithColor(element) {
+        if (randomCheckbox.checked) {
+            element.style.backgroundColor = getRandomColor();
+        } else {
+            element.style.backgroundColor = color;
         }
     }
 
