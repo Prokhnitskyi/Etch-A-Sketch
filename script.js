@@ -3,8 +3,10 @@
     const modalButton = document.querySelector('.controls__show-modal');
     const modal = document.querySelector('.size-modal');
     const sizeForm = document.querySelector('.size-form');
+    const colorPicker = document.getElementById('color');
     const darkenCheckbox = document.getElementById('darken');
     const randomCheckbox = document.getElementById('random-color');
+    let color = colorPicker.value;
     let mouseDown = false;
 
     function renderGrid(containerElement, gridSize = 16) {
@@ -36,12 +38,15 @@
         if (darkenCheckbox.checked) {
             cell.style.filter = `brightness(${newBrightnessValue})`;
             cell.dataset.brightness = newBrightnessValue.toFixed(2);
+        } else {
+            cell.style.filter = `brightness(1)`;
+            cell.dataset.brightness = '1';
         }
 
         if (randomCheckbox.checked) {
             cell.style.backgroundColor = getRandomColor();
         } else {
-            cell.style.backgroundColor = `rgb(0 0 0)`;
+            cell.style.backgroundColor = color;
         }
     }
 
@@ -54,12 +59,17 @@
         return `rgb(${rgbOptions.r} ${rgbOptions.g} ${rgbOptions.b})`;
     }
 
+    function changeDrawColor() {
+        color = this.value;
+    }
+
     gridContainer.addEventListener('mousemove', draw);
     gridContainer.addEventListener('mousedown', ()=> mouseDown = true);
     gridContainer.addEventListener('mouseup', ()=> mouseDown = false);
     gridContainer.addEventListener('mouseleave', ()=> mouseDown = false);
     modalButton.addEventListener('click', () => modal.showModal());
     sizeForm.addEventListener('submit', resizeGrid);
+    colorPicker.addEventListener('change', changeDrawColor);
 
     renderGrid(gridContainer);
 })();
